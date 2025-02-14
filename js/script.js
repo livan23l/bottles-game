@@ -180,9 +180,10 @@ function saveInitialPositions() {
             bottleYXInitials.push(btlYX)
         })
 
-    bottlesPlay = []
     for (let i = 0; i < bottles; i++) {
-        bottlesPlay.push(false)
+        if (bottlesPlay[i] !== false) {
+            bottleInDestiny(i, bottlesPlay[i])
+        }
     }
 }
 
