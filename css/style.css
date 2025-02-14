@@ -1,0 +1,478 @@
+@font-face {
+    font-family: "Coda";
+    src: url("../font/Coda-Regular.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+:root {
+    --border-size: 2px;
+    --border-color: #000000;
+    --border-solid: var(--border-size) solid var(--border-color);
+    --border-dashed: var(--border-size) dashed var(--border-color);
+    --primary: #FFE9D8;
+    --secondary: #FFD7B9;
+    --terciary: #ffe4d0;
+    --success: #7BEC7B;
+    --success-text: #195519;
+    --warning: #ECCE7B;
+    --warning-text: #555419;
+    --danger: #EC7B7B;
+    --danger-text: #551919;
+}
+
+.page {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    background-color: var(--primary);
+    overflow-x: hidden;
+    font-family: "Coda";
+    user-select: none;
+}
+
+.header {
+    box-sizing: border-box;
+    width: 100%;
+    padding-inline: 1rem;
+    background-color: var(--secondary);
+    text-align: center;
+}
+
+.header__title {
+    font-size: 2rem;
+}
+
+.main {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 3rem 1rem;
+    font-size: 1.1rem;
+}
+
+.main__section {
+    box-sizing: border-box;
+    width: min(100%, 52.5rem);
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 2rem;
+}
+
+.main__section--hidden {
+    display: none;
+}
+
+.main__options {
+    box-sizing: border-box;
+    width: min(75%, 20rem);
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1.5rem;
+}
+
+.main__options--inline {
+    flex-direction: row;
+    justify-content: center;
+}
+
+.main__title {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.main__subtitle {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.footer {
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 auto;
+    border-top: 1px solid black;
+    text-align: center;
+}
+
+.footer__text {
+    font-size: 1.1rem;
+    word-spacing: 0.2rem;
+}
+
+
+/* Alerts */
+.alert {
+    box-sizing: border-box;
+    width: fit-content;
+    padding: 0.2rem 0.5rem;
+    border-radius: 7px;
+    position: fixed;
+    z-index: 10;
+    top: 1rem;
+    left: 50%;
+    translate: -50% 0;
+    text-align: center;
+    transition: translate 0.2s;
+}
+
+.alert--success {
+    background-color: var(--success);
+    color: var(--success-text);
+}
+
+.alert--danger {
+    background-color: var(--danger);
+    color: var(--danger-text);
+}
+
+.alert--warning {
+    background-color: var(--warning);
+    color: var(--warning-text);
+}
+
+.alert--hidden {
+    translate: -50% calc(-100% - 1rem);
+}
+
+
+/* Buttons */
+.button {
+    display: block;
+    min-width: 7.5rem;
+    padding: 1rem;
+    border: 3px solid var(--secondary);
+    border-radius: 10px;
+    background-color: var(--terciary);
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.button:hover {
+    background-color: var(--secondary);
+    scale: 0.98;
+}
+
+
+/* Configuration */
+.configuration {
+    box-sizing: border-box;
+    width: 100%;
+    padding-block: 2rem;
+    border: 2px solid var(--secondary);
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 2rem;
+    text-align: center;
+}
+
+.configuration__content {
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+.configuration__option {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    align-items: center;
+}
+
+.configuration__input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.configuration__value {
+    font-size: 1.2rem;
+}
+
+.configuration__button {
+    appearance: none;
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid black;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+/* Game */
+.game {
+    box-sizing: border-box;
+    width: 100%;
+    padding-block: 2rem;
+    border: 2px solid var(--secondary);
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 4rem;
+    text-align: center;
+}
+
+.lifes {
+    box-sizing: border-box;
+    width: 100%;
+    padding-inline: 1rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.bottles {
+    box-sizing: border-box;
+    width: 100%;
+    padding-inline: 1rem;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 3rem;
+}
+
+.bottles__destiny, .bottles__options {
+    box-sizing: border-box;
+    border-bottom: 2px solid black;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+
+/* Bottle styles */
+.bottle {
+    box-sizing: border-box;
+    height: 5rem;
+    position: relative;
+    aspect-ratio: 1/2;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.bottle--dashed {
+    cursor: auto;
+}
+
+.bottle__top {
+    box-sizing: border-box;
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.bottle__cap {
+    box-sizing: border-box;
+    width: 40%;
+    height: 50%;
+    border: var(--border-solid);
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    translate: -50% 0;
+}
+
+.bottle__cap--dashed {
+    border: var(--border-dashed);
+}
+
+.bottle__neck {
+    box-sizing: border-box;
+    width: 25%;
+    height: 50%;
+    border: var(--border-solid);
+    border-top: none;
+    border-bottom: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% 0;
+}
+
+.bottle__neck--dashed {
+    border: var(--border-dashed);
+    border-top: none;
+    border-bottom: none;
+}
+
+.bottle__body {
+    box-sizing: border-box;
+    width: 100%;
+    height: 80%;
+    border: var(--border-solid);
+    border-radius: 10px;
+    position: absolute;
+    top: 20%;
+    left: 0;
+    overflow: hidden;
+}
+
+.bottle__body--dashed {
+    border: var(--border-dashed);
+}
+
+.bottle__content {
+    box-sizing: border-box;
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0.75;
+}
+
+.bottle__content--0 {
+    background-color: #A51717;
+}
+
+.bottle__content--1 {
+    background-color: #189207;
+}
+
+.bottle__content--2 {
+    background-color: #0E4fA5;
+}
+
+.bottle__content--3 {
+    background-color: #F87D09;
+}
+
+.bottle__content--4 {
+    background-color: #580ECE;
+}
+
+.bottle__content--5 {
+    background-color: #858585;
+}
+
+.bottle__content--6 {
+    background-color: #DFC90A;
+}
+
+.bottle__content--7 {
+    background-color: #F098F3;
+}
+
+.bottle__content--8 {
+    background-color: #0694A7;
+}
+
+.bottle__content--9 {
+    background-color: #EB117E;
+}
+
+
+/* Lifes */
+.life {
+    box-sizing: border-box;
+    width: 2.5rem;
+    position: relative;
+    aspect-ratio: 1/1;
+}
+
+.life::before, .life::after {
+    box-sizing: border-box;
+    content: "";
+    width: 75%;
+    height: 75%;
+    border: 2px solid black;
+    border-radius: 50%;
+    position: absolute;
+    z-index: -1;
+    top: -25%;
+    background-color: red;
+}
+
+.life::before {
+    left: -25%;
+    translate: 18% 18%;
+}
+
+.life::after {
+    right: -25%;
+    translate: -18% 18%;
+}
+
+.life__amount {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding-top: 10%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    letter-spacing: 0;
+}
+
+.life__bottom {
+    box-sizing: border-box;
+    width: 75%;
+    height: 75%;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    rotate: 45deg;
+    background-color: red;
+}
+
+.life__bottom::before {
+    content: "";
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+@media(min-width: 48rem) {
+    .main {
+        font-size: 1.3rem;
+    }
+
+    .main__title {
+        font-size: 2rem;
+    }
+
+    .footer__text {
+        font-size: 1.3rem;
+    }
+
+    .configuration__value {
+        font-size: 1.35rem;
+    }
+
+    .configuration__button {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 2rem;
+    }
+
+    .game {
+        gap: 1rem;
+    }
+
+    .life {
+        width: 3rem;
+    }
+
+    .bottle {
+        height: 6rem;
+    }
+}

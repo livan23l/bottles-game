@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bottle Game</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page">
+    <template id="bottle-template">
+        <div class="bottle">
+            <div class="bottle__top">
+                <div class="bottle__cap"></div>
+                <div class="bottle__neck"></div>
+            </div>
+
+            <div class="bottle__body">
+                <div class="bottle__content"></div>
+            </div>
+        </div>
+    </template>
+
+    <template id="bottleDashed-template">
+        <div class="bottle bottle--dashed">
+            <div class="bottle__top">
+                <div class="bottle__cap bottle__cap--dashed"></div>
+                <div class="bottle__neck bottle__neck--dashed"></div>
+            </div>
+
+            <div class="bottle__body bottle__body--dashed">
+                <div class="bottle__content"></div>
+            </div>
+        </div>
+    </template>
+
+    <template id="life-template">
+        <div class="life">
+            <span class="life__amount"></span>
+            <div class="life__bottom"></div>
+        </div>
+    </template>
+
+    <div id="alert" class="alert alert--hidden">
+        <p></p>
+    </div>
+
+    <header class="header">
+        <h1 class="header__title">Bottle Game</h1>
+    </header>
+
+    <main class="main">
+        <section id="main" class="main__section">
+            <div class="main__options">
+                <button type="button" class="button" onclick="game()">Jugar</button>
+                <button type="button" class="button" onclick="configuration()">Configuración</button>
+            </div>
+        </section>
+
+        <section id="configuration" class="main__section main__section--hidden">
+            <div class="configuration">
+                <h2 class="main__title">Configuración</h2>
+                <div class="configuration__content">
+                    <div class="configuration__option">
+                        <p>Cantidad de vidas:</p>
+                        <div class="configuration__input">
+                            <button type="button" class="configuration__button" onclick="changeSetting('life', 'remove')">-</button>
+                            <p id="lifes" class="configuration__value">0</p>
+                            <button type="button" class="configuration__button" onclick="changeSetting('life', 'add')">+</button>
+                        </div>
+                    </div>
+                    <div class="configuration__option">
+                        <p>Cantidad de botellas:</p>
+                        <div class="configuration__input">
+                            <button type="button" class="configuration__button" onclick="changeSetting('bottle', 'remove')">-</button>
+                            <p id="bottles" class="configuration__value">0</p>
+                            <button type="button" class="configuration__button" onclick="changeSetting('bottle', 'add')">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main__options main__options--inline">
+                <button type="button" class="button" onclick="saveChanges()">Guardar</button>
+                <button type="button" class="button" onclick="main()">Cancelar</button>
+            </div>
+        </section>
+
+        <section id="game" class="main__section main__section--hidden">
+            <div class="game">
+                <div class="lifes"></div>
+
+                <div class="bottles">
+                    <div class="bottles__destiny"></div>
+                    <div class="bottles__options"></div>
+                </div>
+            </div>
+
+            <div class="main__options main__options--inline">
+                <button type="button" class="button" onclick="play()">Jugar</button>
+                <button type="button" class="button" onclick="main()">Volver al menú</button>
+            </div>
+        </section>
+    </main>
+
+
+
+    <footer class="footer">
+        <p class="footer__text">Autor: Iván Alfredo López Barrera</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
